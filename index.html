@@ -83,7 +83,7 @@ function render(){
    }).join("");
    return `<tr><td>${esc(phase)}</td>${cells}</tr>`;
  }).join("");
- document.getElementById("log").innerHTML=ws.flatMap(w=>w.events.map((e,i)=>`<tr><td>${esc(w.label)}</td><td>${i+1}</td><td>${esc(e[1])}</td><td>${esc(e[0])}</td><td>${tag(e[3],e[2])}</td><td>${esc(e[2])}</td></tr>`)).join("");
+ document.getElementById("log").innerHTML=ws.map((w,wi)=>`<details class="walk-session"${wi===0?" open":""}><summary><span>${w.time_of_day==="Morning"?"🌤️":w.time_of_day==="Lunch"?"🌦️":"🌙"} ${esc(w.label)}</span><span>${w.events.length} recorded events</span></summary><div class="session-detail"><div class="log-wrap"><table class="log-table"><thead><tr><th>Sequence</th><th>Location / journey</th><th>Trigger / surroundings</th><th>Tail / reactions</th><th>Other behaviour</th></tr></thead><tbody>${w.events.map((e,i)=>`<tr><td>${i+1}</td><td>${esc(e[1])}</td><td>${esc(e[0])}</td><td>${tag(e[3],e[2])}</td><td>${esc(e[2])}</td></tr>`).join("")}</tbody></table></div></div></details>`).join("");
 }
 function exportCsv(){
  const rows=[["Walk","Date","Time of day","Start time","Event phase","Location / journey","Tail / reactions and observation","Status tag"]];
