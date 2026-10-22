@@ -27,7 +27,7 @@ footer{margin-top:28px;padding-top:16px;border-top:1px solid light-dark(#dce4dd,
 @media print{.toolbar{display:none}#app{padding:0;background:#fff;color:#111}header{print-color-adjust:exact;-webkit-print-color-adjust:exact}.matrix-wrap,.log-wrap{overflow:visible}.matrix-wrap table,.log-table{min-width:0;font-size:9px}th,td{padding:6px;font-size:9px;position:static!important}.metrics,.pattern{break-inside:avoid}body{background:#fff;color:#111}}
 </style></head>
 <body><div id="app">
-<header><div><div class="eyebrow">Nova · Behaviour journal</div><h1>Walks, compared</h1><p>All recorded walks in one comparison. Similar phases are aligned on the same row across walks, while the detailed event log below preserves the chronological observations from each transcript.</p></div><div class="meta">Initial record: 20–21 October 2026<br>4 walks · 2 days · 3 time periods</div></header>
+<header><div><div class="eyebrow">🐾 Nova · Behaviour journal</div><h1>Walks, compared</h1><p>All recorded walks in one comparison. Similar phases are aligned on the same row across walks, while the detailed event log below preserves the chronological observations from each transcript.</p></div><div class="meta">Initial record: 20–21 October 2026<br>4 walks · 2 days · 3 time periods</div></header>
 <nav class="toc" aria-label="Table of contents"><h2>Jump to a section</h2><div class="toc-links"><a href="#side-by-side">🗂️ All recorded events · side-by-side comparison</a><a href="#patterns">🔎 Patterns worth tracking</a><a href="#chronological-log">🕒 All recorded events · chronological log</a><a class="toc-free-work" href="#activity-observations">💜 Free work sessions observations</a></div></nav>
 <div class="toolbar"><label for="filter"><strong>Show walks</strong></label><select id="filter"><option value="all">All recorded walks</option><option value="morning">Morning walks</option><option value="lunch">Lunchtime walks</option><option value="evening">Evening walks</option></select><button class="primary" id="csv">Export event log (CSV)</button><button id="print">Print / save as PDF</button></div>
 <div class="metrics" id="metrics"></div>
@@ -66,7 +66,7 @@ function tag(s,t){return `<span class="pill ${cls(s)}">${esc(t)}</span>`;}
 function filtered(){const v=document.getElementById("filter").value;return v==="all"?walks:walks.filter(w=>w.time_of_day.toLowerCase()===v);}
 function render(){
  const ws=filtered();
- document.getElementById("matrixTitle").textContent=(document.getElementById("filter").value==="all"?"All recorded events":document.getElementById("filter").selectedOptions[0].text)+" · side-by-side comparison";
+ document.getElementById("matrixTitle").textContent="🗂️ "+(document.getElementById("filter").value==="all"?"All recorded events":document.getElementById("filter").selectedOptions[0].text)+" · side-by-side comparison";
  document.getElementById("metrics").innerHTML=[
   ["Walks shown",ws.length,"Grouped by time of day"],
   ["Events recorded",ws.reduce((n,w)=>n+w.events.length,0),"Detailed observations"],
